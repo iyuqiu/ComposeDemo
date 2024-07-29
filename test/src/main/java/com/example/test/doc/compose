@@ -1,0 +1,24 @@
+
+Compose 图片加载库：https://github.com/coil-kt/coil/tree/main
+
+官方的补充库，临时的，未定功能的孵化器，后期可能删除；api功能不稳定   https://github.com/google/accompanist
+
+--------------------------------
+FrameLayout   Box()
+
+LinearLayout   Column/Row
+
+RelativeLayout  Box()  Modifier控制位置关系
+
+ConstrainLayout -> MotionLayout  Jetpack   Box()部分替代
+
+ScrollView  Modifier.horizontalScroll(rememberScrollState() )或者 Modifier.verticalScroll(rememberScrollState() )
+
+RecyclerView - Jetpack    LazyColumn
+
+ViewPager - Jetpack ->   Pager
+
+EditText  TextField()
+
+
+

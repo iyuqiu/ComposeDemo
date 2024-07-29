@@ -1,0 +1,39 @@
+
+Compose 有androidx中的7个group组成，每个组都包含一套特定用途的功能； 下面是从下到上的顺序
+
+ material3 应该看下系统含有的哪些设计控件
+----------------------------------------------------------------
+material3(五楼)   - Button 设计风格，Floating Action Button 点击波纹效果等
+Build Jetpack Compose UIs with Material Design 3 Components, the next evolution of Material Design.
+Material 3 includes updated theming and components and Material You personalization features like dynamic color,
+and is designed to be cohesive with the new Android 12 visual style and system UI.
+
+foundation(四楼) - 根基，Column Row 视图组件 Image ；
+Write Jetpack Compose applications with ready to use building blocks and extend foundation to build your own design system pieces.
+
+animation(三楼)  构建动画
+Build animations in their Jetpack Compose applications to enrich the user experience.
+
+ui(二楼)  绘制 测量 布局   最底层调用Layout
+Fundamental components of compose UI needed to interact with the device, including layout, drawing, and input.
+
+runtime(一楼)  最下层 概念模型 remember mutableStateOf  数据转化
+Fundamental building blocks of Compose's programming model and state management, and core runtime for the Compose Compiler Plugin to target.
+--------------------
+compiler(地基) 编译器
+Transform @Composable functions and enable optimizations with a Kotlin compiler plugin.
+
+
+---------------------------------
+androidx.compose.ui:ui-tooling 依赖 androidx.compose.ui:ui-tooling-preview 依赖 androidx.compose.ui:ui
+
+正常的话，都是 androidx.compose.ui:ui 依赖下面的包
+
+androidx.compose.material3:material3  依赖了 androidx.compose.material3:material3-icons-core
+的androidx.compose.material3:material3-icons-core
+         androidx.compose.material3:material3-icons-extended 依赖的是androidx.compose.material3:material3-icons-core
+         androidx.compose.material3:material3-icons-core 依赖的是 androidx.compose.ui:ui 没有依赖androidx.compose.material3:material3
+
+1、写代码的时候依赖material就够了，可能跳过material依赖，foundation就够了
+2、如果需要ui-tooling,需要单独写出来
+3、如果你需要material-icons-extended,需要单独写出来

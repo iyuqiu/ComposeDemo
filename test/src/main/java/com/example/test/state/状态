@@ -1,0 +1,76 @@
+
+Compose 的编译器插件 Compiler Plugin
+
+编译器插件
+@Composable - 标识符
+
+setContent 不是@Composable标识； 是由ActualJvm.jvm.kt文件中的invokeComposable 内部转接
+
+Compose是UI框架，它编译的事情； 不是kotlin编译的事情； 所以由语言kotlin编写，所以不能由类似kotlin的
+
+Composable函数
+
+Composable函数使用场景：
+        1、自定义View，不对;因为两个Text是不用自定义view的，使用了xml更合适
+        2、更像xml文件的写法，不对;因为Composable可以入参，且可以直接控制view展示； xml不能逻辑处理，只能标记
+        3、等价物：xml格式+ 自定义View 的并集
+
+MainActivity - >MainLayout 布局文件
+
+
+
+刷新包含： 组合、布局、绘制
+ 组合： 拼凑出界面实际内容
+  ComposeView -> AndroidComposeView -> LayoutNode
+过程：组合 Compose Composition
+结果：组合 Composition
+
+Mutablestate -> StateObject -> StateRecord(链表next) ->Compose 支持事务功能
+
+被刷新后叫做重组 reCompose
+
+真正被订阅的是StateObject
+
+StateRecord :变量
+Snapshot：整个状态；可以对应多个StateRecord； 一个StateRecord对应一个Snapshot
+----------
+两个订阅过程：
+1、对Snapshot中读写StateObject对象订阅，分别订阅读和写，所有有两个接受者：readObserver和writeObserver
+  发生时间 -  订阅：Snapshot 创建的时候； 通知：读和写的时候
+
+2、 对 「每一个」StateObject的应用做订阅
+  发生时间 -  订阅： 第一个订阅的readObserver 被调用（通知）的时候； 通知： StateObject 新值被应用的时候
+
+----------------------------------------
+ 无状态、状态提升和单项数据流
+ ---------------------------
+ StateLess -> 无状态
+
+  Text("")设置完成后，无法再设置； 十个特点
+  无状态是没有内部状态，但是可以有外部状态
+
+  State Hoisting 状态提升 就是放到父控件里； 尽量不往上提
+
+  TextField： material; 不是foundation或者UI
+     默认不自动更新文本，需要自己更新
+
+  数据：缓存： 本地数据 + 网络数据
+
+  Single Source of Truth - 单一信息源
+  数据上游和下游- 网络上游，数据库下游  -> 单项数据流 Unidirectionanl Data Flow
+
+TextFiled -> BasicTextField
+
+-------------------------------------
+状态机制
+
+
+
+
+
+
+
+
+
+
+
